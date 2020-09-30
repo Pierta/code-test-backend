@@ -2,7 +2,6 @@
 using SlothEnterprise.ProductApplication.Applications;
 using SlothEnterprise.ProductApplication.Exceptions;
 using SlothEnterprise.ProductApplication.Products;
-using System;
 
 namespace SlothEnterprise.ProductApplication.SubmitApplicationStrategies
 {
