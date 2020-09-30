@@ -1,4 +1,5 @@
 ﻿using SlothEnterprise.ProductApplication.Applications;
+using SlothEnterprise.ProductApplication.Exceptions;
 using SlothEnterprise.ProductApplication.SubmitApplicationStrategies;
 
 namespace SlothEnterprise.ProductApplication
@@ -14,7 +15,16 @@ namespace SlothEnterprise.ProductApplication
 
         public int SubmitApplicationFor(ISellerApplication application)
         {
-            _submitApplicationStrategyFactory.SetStrategy(application.Product);
+            try
+            {
+                _submitApplicationStrategyFactory.SetStrategy(application.Product);
+            }
+            catch(UnsupportedProductTypeException exception)
+            {
+                //// TODO: add logging here
+                throw exception;
+            }
+
             var result = _submitApplicationStrategyFactory.ExecuteStrategy(application);
 
             return result;
