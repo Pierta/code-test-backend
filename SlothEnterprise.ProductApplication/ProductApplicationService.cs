@@ -6,7 +6,7 @@ using SlothEnterprise.ProductApplication.Products;
 
 namespace SlothEnterprise.ProductApplication
 {
-    public class ProductApplicationService
+    public class ProductApplicationService: IProductApplicationService
     {
         private readonly ISelectInvoiceService _selectInvoiceService;
         private readonly IConfidentialInvoiceService _confidentialInvoiceWebService;
@@ -21,7 +21,6 @@ namespace SlothEnterprise.ProductApplication
 
         public int SubmitApplicationFor(ISellerApplication application)
         {
-
             if (application.Product is SelectiveInvoiceDiscount sid)
             {
                 return _selectInvoiceService.SubmitApplicationFor(application.CompanyData.Number.ToString(), sid.InvoiceAmount, sid.AdvancePercentage);
